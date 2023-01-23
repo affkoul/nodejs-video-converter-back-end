@@ -1,20 +1,36 @@
 {
-	"name": "videochat",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"start": "node index.js",
-		"dev": "nodemon index.js"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"cors": "^2.8.5",
-		"express": "^4.17.1",
-		"nodemon": "^2.0.7",
-		"serve": "^11.3.2",
-		"socket.io": "^4.0.0"
-	}
+  "name": "online-video-converter",
+  "version": "1.0.0",
+  "description": "React built app that can convert video files to other formats. example: video.AVI to video.MOV",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "npm install",
+    "build": "npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/affkoul/nodejs-video-converter-back-end.git"
+  },
+  "author": "Abdullah Canbolat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/affkoul/nodejs-video-converter-back-end/issues"
+  },
+  "homepage": "https://github.com/affkoul/nodejs-video-converter-back-end#readme",
+  "dependencies": {
+    "dot-env": "0.0.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.3",
+    "fluent-ffmpeg": "^2.1.2",
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.3"
+  }
 }
